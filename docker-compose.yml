@@ -1,0 +1,11 @@
+# La base de datos es externa (Supabase / PostgreSQL gestionado):
+# solo se levanta la aplicación web. DATABASE_URL se lee desde .env
+services:
+  web:
+    build: .
+    container_name: eventqr_web
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT:-8080}:${APP_PORT:-8080}"
